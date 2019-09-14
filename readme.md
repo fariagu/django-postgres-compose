@@ -4,7 +4,9 @@ Template project for future webapps using django as backend, postgres as DB and 
 
 ## Instructions
 
-### Create a python virtual environment (virutalenv)
+### Python
+
+#### Create a python virtual environment (virutalenv)
 
 First time only.
 
@@ -21,14 +23,64 @@ First time only.
     python3 -m venv env
     ```
 
-### Activate a virtual environment
+#### Activate a virtual environment
 
 ``` bash
 source env/bin/activate
 ```
 
-### Leave virtual environment
+#### Leave virtual environment
 
 ``` bash
 deactivate
+```
+
+### Docker
+
+#### Create Django project
+
+1. Change directory to root of project
+2. Create the project by running:
+
+    ``` bash
+    sudo docker-compose run web django-admin startproject composedjango .
+    ```
+
+3. Change ownership of new files
+
+    ``` bash
+    sudo chown -R $USER:$USER .
+    ```
+
+#### Connect Database
+
+1. Edit the ```composedjango/settings.py``` file
+2. Replace the ```DATABASES = ...``` section with the following:
+
+    ``` python
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'postgres',
+            'USER': 'postgres',
+            'HOST': 'db',
+            'PORT': 5432,
+        }
+    }
+    ```
+
+3. Run the following command from the project root:
+
+    ``` bash
+    docker-compose up
+    ```
+
+4. Go to ```http://localhost:8000``` to confirm server is running
+
+#### Notes
+
+Docker daemon must be running
+
+``` bash
+sudo service docker start
 ```
