@@ -55,27 +55,27 @@ deactivate
 #### Connect Database
 
 1. Edit the ```composedjango/settings.py``` file
-2. Replace the ```DATABASES = ...``` section with the following:
+   1. Replace the ```DATABASES = ...``` section with the following:
 
-    ``` python
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': 'postgres',
-            'USER': 'postgres',
-            'HOST': 'db',
-            'PORT': 5432,
+        ``` python
+        DATABASES = {
+            'default': {
+                'ENGINE': 'django.db.backends.postgresql',
+                'NAME': 'postgres',
+                'USER': 'postgres',
+                'HOST': 'db',
+                'PORT': 5432,
+            }
         }
-    }
-    ```
+        ```
 
-3. Run the following command from the project root:
+2. Run the following command from the project root:
 
     ``` bash
     docker-compose up
     ```
 
-4. Go to ```http://localhost:8000``` to confirm server is running
+3. Go to <http://localhost:8000> to confirm server is running
 
 #### Notes
 
