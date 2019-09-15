@@ -55,7 +55,9 @@ deactivate
 #### Connect Database
 
 1. Edit the ```composedjango/settings.py``` file
-   1. Replace the ```DATABASES = ...``` section with the following:
+    1. Add ```'corsheaders'``` to the ```INSTALLED_APPS``` section
+    2. Add ```'corsheaders.middleware.CorsMiddleware'``` to the ```MIDDLEWARE``` section
+    3. Replace the ```DATABASES = ...``` section with the following:
 
         ``` python
         DATABASES = {
@@ -68,6 +70,8 @@ deactivate
             }
         }
         ```
+
+    4. Add ```CORS_ORIGIN_ALLOW_ALL = True``` to the bottom of the file
 
 2. Run the following command from the project root:
 
